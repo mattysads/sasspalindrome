@@ -1,0 +1,15 @@
+{
+  "name": "sasspalindrome",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "node-sass": "^4.13.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "isPalindrome": "node-sass ./index.scss"
+  },
+  "author": "",
+  "license": "UNLICENSED"
+}

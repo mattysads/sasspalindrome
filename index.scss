@@ -1,0 +1,40 @@
+$input: 1234321 !default;
+
+%isPalindrome {
+  content: 'Yep! That\'s a palindrome';
+}
+
+%notPalindrome {
+  content: 'Nope, not a palindrome';
+}
+
+@function isPalindrome($var) {
+  $local: $var;
+  $compareArray: ();
+
+  @while ($local > 0) {
+    $remainder: $local % 10;
+    $local: round($local / 10);
+
+    $compareArray: append($compareArray, $remainder);
+  }
+
+  $length: length($compareArray);
+
+  @for $i from 1 through $length {
+    $inverse: 1 + $length - $i;
+    @if (nth($compareArray, $i) != nth($compareArray, $inverse)) {
+      @return false;
+    }
+  }
+
+  @return true;
+}
+
+.input-#{$input} {
+  @if isPalindrome($input) {
+    @extend %isPalindrome;
+  } @else {
+    @extend %notPalindrome;
+  }
+}
